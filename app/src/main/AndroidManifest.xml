@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NorthWest"></activity>
+        <activity android:name=".SouthEast"></activity>
+        <activity android:name=".SouthWest" />
+        <activity android:name=".NorthEast" />
+        <activity android:name=".NorthWest" />
         <activity android:name=".MinCostActivity" />
-
         <activity android:name=".FifthActivity" />
         <activity android:name=".ThirdActivity" />
         <activity android:name=".ForthActivity" />

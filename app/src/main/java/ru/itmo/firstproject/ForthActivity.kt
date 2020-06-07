@@ -22,7 +22,7 @@ class ForthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_forth)
 
         btnNext.setOnClickListener {
-            val intent = Intent(this, NorthWest::class.java)
+            val intent = Intent(this, MinCostActivity::class.java)
             startActivity(intent)
         }
 

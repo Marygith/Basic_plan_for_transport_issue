@@ -13,24 +13,53 @@ class FifthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fifth)
         supportActionBar?.hide()
-        lateinit var ATVArrayList: MutableList<ai>
-      var currentAdapter: adapterATV? = null // EditAdapter
-        ATVArrayList = MutableList(0, {x -> ai()})
-        for (item in adapterA.aiArrayList)
+        val adapterGrid: adapterATV?
+       val adapterAi : adapterATV
+        val adapterBi : adapterATV
+        var ATVArrayList: MutableList<ai> = MutableList(0, { x -> ai()})
+        val aArrayList: MutableList<ai> = MutableList(0, { x -> ai()})
+        val bArrayList: MutableList<ai> = MutableList(0, { x -> ai()})
+/*        for (item in adapterATV.ATVArrayList)
         {
             val a = ai()
             a.setAiValue(item.getAiValue())
             ATVArrayList.add(a)
+        }*/
+        adapterGrid = adapterATV(this, gridCellAdapter.gridArrayList)
+        gridrecycler.adapter = adapterGrid
+        gridrecycler.layoutManager =
+            GridLayoutManager(
+                applicationContext,
+                adapterB.biArrayList.size
+            )
+for(item in adapterA.aiArrayList)
+{
+    val a = ai()
+    a.setAiValue(item.getAiValue())
+    aArrayList.add(a)
+}
+        for(item in adapterB.biArrayList)
+        {
+            val a = ai()
+            a.setAiValue(item.getAiValue())
+            bArrayList.add(a)
         }
-        currentAdapter = adapterATV(this, ATVArrayList)
-        arecycler.adapter = currentAdapter
+
+        adapterAi = adapterATV(this, aArrayList)
+        arecycler.adapter = adapterAi
         arecycler.layoutManager =
             LinearLayoutManager(
                 applicationContext,
                 LinearLayoutManager.VERTICAL,
                 false
             )
-
-
+        adapterBi = adapterATV(this, bArrayList)
+        brecycler.adapter = adapterBi
+        brecycler.layoutManager =
+            LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
     }
 }
