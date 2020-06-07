@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Method of potentials</string>
+
+    <string name="wow">Wow it does work!!</string>
+    <string name="wohohohoooow">Wohohohoooow</string>
+    <string name="hello">Hello!!</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
