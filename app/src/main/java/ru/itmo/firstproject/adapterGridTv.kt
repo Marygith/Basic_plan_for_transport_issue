@@ -2,47 +2,40 @@ package ru.itmo.firstproject
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.view.*
-import java.util.ArrayList
-
-class adapterATV(ctx: Context, ATVArrayLists: MutableList<ai>) :
-    RecyclerView.Adapter<adapterATV.viewHolder>() {
 
 
-    val inflater: LayoutInflater
-//    var ATVArrayList: MutableList<ai>
+class adapterGridTv(ctx: Context, gridTvArrayLists: MutableList<ai>) :
+    RecyclerView.Adapter<adapterGridTv.viewHolder>() {
+
+
+    private val inflater: LayoutInflater = LayoutInflater.from(ctx)
 
     init {
 
-        inflater = LayoutInflater.from(ctx)
-        ATVArrayList = ATVArrayLists
+        gridTvArrayList = gridTvArrayLists
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adapterATV.viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adapterGridTv.viewHolder {
 
         val view = inflater.inflate(R.layout.final_item, parent, false)
 
         return viewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: adapterATV.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: adapterGridTv.viewHolder, position: Int) {
 
 
-        holder.tv.setText(ATVArrayList[position].getAiValue())
+        holder.tv.text = gridTvArrayList[position].getAiValue()
 
 
     }
 
     override fun getItemCount(): Int {
-        return ATVArrayList.size
+        return gridTvArrayList.size
     }
 
     inner class viewHolder(textView: View) : RecyclerView.ViewHolder(textView) {
@@ -64,7 +57,7 @@ class adapterATV(ctx: Context, ATVArrayLists: MutableList<ai>) :
 
                 override fun onTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
-                    ATVArrayList[adapterPosition].setAiValue(textView.text.toString())
+                    gridTvArrayList[adapterPosition].setAiValue(textView.text.toString())
                 }
 
                 override fun afterTextChanged(editable: Editable) {
@@ -77,6 +70,6 @@ class adapterATV(ctx: Context, ATVArrayLists: MutableList<ai>) :
     }
 
     companion object {
-        lateinit var ATVArrayList: MutableList<ai>
+        lateinit var gridTvArrayList: MutableList<ai>
     }
 }
