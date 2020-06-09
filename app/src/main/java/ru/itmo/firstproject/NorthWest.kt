@@ -1,5 +1,6 @@
 package ru.itmo.firstproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +14,22 @@ class NorthWest : AppCompatActivity() {
         supportActionBar?.hide()
         val a = adapterA.aiArrayList.size
         val b = adapterB.biArrayList.size
+
+        val aiArray = MutableList(0) {ai()}
+        val biArray = MutableList(0) {ai()}
+        for(item in adapterB.biArrayList)
+        {
+            val x = ai()
+            x.setAiValue(item.getAiValue())
+            biArray.add(x)
+        }
+        for(item in adapterA.aiArrayList)
+        {
+            val y = ai()
+            y.setAiValue(item.getAiValue())
+            aiArray.add(y)
+        }
+
     //    val array = Array(a) { IntArray(b) }
         val plan = Array(a) { IntArray(b) }
 
@@ -28,57 +45,64 @@ var i = 0
 while(true)
 {
     var buffer = 0
-    for(item in adapterB.biArrayList) {if(item.getAiValue().toInt() != -1) {buffer = -1}}
+    for(item in biArray) {if(item.getAiValue().toInt() != -1) {buffer = -1}}
     if(buffer == 0) {break}
-if(adapterA.aiArrayList[i].getAiValue().toInt() >= adapterB.biArrayList[k].getAiValue().toInt() && adapterB.biArrayList[k].getAiValue().toInt() != -1) {
-    adapterA.aiArrayList[i].setAiValue((adapterA.aiArrayList[i].getAiValue().toInt() - adapterB.biArrayList[k].getAiValue().toInt()).toString())
-    plan[i][k] = adapterB.biArrayList[k].getAiValue().toInt()
-    adapterB.biArrayList[k].setAiValue("-1")
+if(aiArray[i].getAiValue().toInt() >= biArray[k].getAiValue().toInt() && biArray[k].getAiValue().toInt() != -1) {
+    aiArray[i].setAiValue((aiArray[i].getAiValue().toInt() - biArray[k].getAiValue().toInt()).toString())
+    plan[i][k] = biArray[k].getAiValue().toInt()
+    biArray[k].setAiValue("-1")
     k++
 
-    if (adapterA.aiArrayList[i].getAiValue().toInt() == 0) {
-        adapterA.aiArrayList[i].setAiValue("-1"); i++}
+    if (aiArray[i].getAiValue().toInt() == 0) {
+        aiArray[i].setAiValue("-1"); i++}
 continue
 }
-if(adapterA.aiArrayList[i].getAiValue().toInt() < adapterB.biArrayList[k].getAiValue().toInt() && adapterB.biArrayList[k].getAiValue().toInt() != -1){
-    adapterB.biArrayList[k].setAiValue((adapterB.biArrayList[k].getAiValue().toInt() - adapterA.aiArrayList[i].getAiValue().toInt()).toString())
-    plan[i][k] = adapterA.aiArrayList[i].getAiValue().toInt()
-    adapterA.aiArrayList[i].setAiValue("-1") ; i++}
+if(aiArray[i].getAiValue().toInt() < biArray[k].getAiValue().toInt() && biArray[k].getAiValue().toInt() != -1){
+    biArray[k].setAiValue((biArray[k].getAiValue().toInt() - aiArray[i].getAiValue().toInt()).toString())
+    plan[i][k] = aiArray[i].getAiValue().toInt()
+    aiArray[i].setAiValue("-1") ; i++}
 
 }
 
 
 
         var finalcost = 0
-        val res = MutableList(a*b) {x -> ""}
-        for (i in 0 until a) {
+        val res = MutableList(a*b) {""}
+        for (h in 0 until a) {
             for (j in 0 until b) {
-                if (plan[i][j] > 0) {
-                    finalcost += plan[i][j]*gridCellAdapter.gridArrayList[b*i+j].getAiValue().toInt()
-                    res[i*b+j] = plan[i][j].toString()
+                if (plan[h][j] > 0) {
+                    finalcost += plan[h][j]*gridCellAdapter.gridArrayList[b*h+j].getAiValue().toInt()
+                    res[h*b+j] = plan[h][j].toString()
                     //         res[i*b+j] = array[i][j].toString()
                 }
             }
         }
-        var currentAdapter: adapterATV? = null // EditAdapter
-        var ATVArrayList: MutableList<ai> = MutableList(0, { x -> ai()})
+        val currentAdapter: adapterGridTv?
+        val gridTvArrayList: MutableList<ai> = MutableList(0) { ai()}
         for (item in res)
         {
             val aa = ai()
             aa.setAiValue(item)
-            ATVArrayList.add(aa)
+            gridTvArrayList.add(aa)
         }
-        currentAdapter = adapterATV(this, ATVArrayList)
+        currentAdapter = adapterGridTv(this, gridTvArrayList)
         gridrecycler.adapter = currentAdapter
         gridrecycler.layoutManager =
             GridLayoutManager(
                 applicationContext,
                 adapterB.biArrayList.size
             )
-        t.setText("Transportation cost: $finalcost")
+      //  t.text = "Transportation cost: $finalcost"
+        t.text = StringBuffer(t.text).append(finalcost)
+        tablebtn.setOnClickListener {
+            val intent = Intent(this, SourceDataActivity::class.java)
+            startActivity(intent)
+        }
+        btnBack.setOnClickListener {
 
-
-
+            val intent = Intent(this, BufferActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }

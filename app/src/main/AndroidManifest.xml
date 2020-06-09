@@ -9,16 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SouthEast"></activity>
+        <activity android:name=".BufferActivity" />
+        <activity android:name=".SouthEast" />
         <activity android:name=".SouthWest" />
         <activity android:name=".NorthEast" />
         <activity android:name=".NorthWest" />
         <activity android:name=".MinCostActivity" />
-        <activity android:name=".FifthActivity" />
+        <activity android:name=".SourceDataActivity" />
         <activity android:name=".ThirdActivity" />
         <activity android:name=".ForthActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

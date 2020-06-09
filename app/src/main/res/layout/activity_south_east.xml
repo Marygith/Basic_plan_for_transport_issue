@@ -21,15 +21,14 @@
 
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
-        android:text="NEXT"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/recycler"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.936" />
 
@@ -37,7 +36,7 @@
         android:id="@+id/t"
         android:layout_width="380dp"
         android:layout_height="70dp"
-        android:text="Transportation cost: 790"
+        android:text="@string/transportation_cost"
         android:textAlignment="center"
         android:textColor="#033005"
         android:textSize="30sp"
@@ -50,7 +49,7 @@
         android:id="@+id/tablebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SOURCE DATA"
+        android:text="@string/source_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.719"

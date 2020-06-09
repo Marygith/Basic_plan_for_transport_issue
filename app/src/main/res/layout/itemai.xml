@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
 
-            android:background="@color/blue"
+            android:background="#023A53"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -36,8 +36,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:background="@color/blue"
-                android:text="Ai:"
+                android:background="#023A53"
+                android:text="@string/ai"
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp"
                 android:textColor="#FFF"
@@ -49,9 +49,12 @@
                 android:layout_height="60dp"
                 android:background="#FFF"
 
-                android:hint="0"
-                android:paddingLeft="60dp"
-                android:textColor="#000" />
+                android:hint="@string/_0"
+                android:paddingStart="60dp"
+                android:paddingEnd="0dp"
+                android:textColor="#000"
+                android:autofillHints=""
+                android:inputType="" />
 
 
         </LinearLayout>

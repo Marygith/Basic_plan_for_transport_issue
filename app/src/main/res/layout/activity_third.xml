@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:layout_marginTop="0dp"
-        android:text="Введите B - количество запасов в пунктах"
+        android:text="@string/enter_b_required_quantity_of_products"
         android:textAlignment="center"
         android:textColor="#033005"
         android:textSize="22sp"
@@ -27,7 +27,7 @@
         android:layout_width="700dp"
         android:layout_height="100dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/btnNext"
+        app:layout_constraintBottom_toTopOf="@+id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -37,7 +37,7 @@
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Bi"
+        android:text="@string/add_bi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.244"
@@ -46,10 +46,10 @@
         app:layout_constraintVertical_bias="0.724" />
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEXT"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"

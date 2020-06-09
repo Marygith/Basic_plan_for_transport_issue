@@ -4,12 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_second.*
-import kotlinx.android.synthetic.main.itemai.*
+
 class SecondActivity : AppCompatActivity() {
 
 
@@ -22,7 +18,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        btnNext.setOnClickListener {
+        btnBack.setOnClickListener {
 val intent = Intent(this, ThirdActivity::class.java)
 startActivity(intent)
         }

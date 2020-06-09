@@ -1,7 +1,7 @@
 package ru.itmo.firstproject
 
 class ai() {
-private var aiValue : String = "0"
+private var aiValue : String = ""
     
     fun getAiValue() : String =  this.aiValue
 

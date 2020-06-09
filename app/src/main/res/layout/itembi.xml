@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="180dp"
     android:layout_height="match_parent"
     android:paddingLeft="6dp"
@@ -11,7 +11,7 @@
     android:paddingBottom="6dp">
 
 
-    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="0dp"
         android:layout_height="60dp"
@@ -28,7 +28,7 @@
             android:layout_width="150dp"
             android:layout_height="60dp"
 
-            android:background="#033005"
+            android:background="#021443"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -36,10 +36,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:background="#033005"
+                android:background="#021443"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Bi:"
+                android:text="@string/bi"
                 android:textColor="#FFF"
                 android:textSize="30sp" />
 
@@ -49,9 +49,12 @@
                 android:layout_height="60dp"
                 android:background="#FFF"
 
-                android:hint="0"
-                android:paddingLeft="60dp"
-                android:textColor="#000" />
+                android:hint="@string/_0"
+                android:paddingStart="60dp"
+                android:paddingEnd="0dp"
+                android:textColor="#000"
+                android:autofillHints=""
+                android:inputType="" />
 
 
         </LinearLayout>

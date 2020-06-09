@@ -8,4 +8,26 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="north_west">Northwest</string>
+    <string name="north_east">Northeast</string>
+    <string name="south_west">Southwest</string>
+    <string name="south_east">Southeast</string>
+
+    <string name="source_data">SOURCE DATA</string>
+    <string name="back">BACK</string>
+    <string name="transportation_cost">Transportation cost:</string>
+
+    <string name="enter_a_the_number_of_stocks">Enter A - the number of stocks</string>
+    <string name="add_ai">Add Ai</string>
+    <string name="next">NEXT</string>
+
+
+    <string name="enter_b_required_quantity_of_products">Enter B - required quantity of products</string>
+    <string name="add_bi">Add Bi</string>
+
+    <string name="_0">0</string>
+    <string name="ai">Ai:</string>
+    <string name="bi">Bi:</string>
+
 </resources>
