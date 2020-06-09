@@ -18,8 +18,15 @@ class ThirdActivity : AppCompatActivity() {
         setContentView(R.layout.activity_third)
 
         btnBack.setOnClickListener {
-            val intent = Intent(this, ForthActivity::class.java)
-            startActivity(intent)
+            if(adapterA.aiArrayList.sumBy { it.getAiValue().toInt() } == adapterB.biArrayList.sumBy { it.getAiValue().toInt() })
+            {textView2.clearComposingText()
+                val intent = Intent(this, ForthActivity::class.java)
+                startActivity(intent)}
+            else{
+textView2.text = StringBuffer("Amounts of required and granted products are not equal")
+
+            }
+
         }
 
         biArrayList= MutableList(1) {ai()}
