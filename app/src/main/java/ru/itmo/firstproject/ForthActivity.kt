@@ -1,6 +1,7 @@
 package ru.itmo.firstproject
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,8 +21,24 @@ class ForthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_forth)
 
         btnBack.setOnClickListener {
-            val intent = Intent(this, BufferActivity::class.java)
-            startActivity(intent)
+            var checker = 0
+            for (item in gridArrayList) {
+                if (!item.getAiValue().matches("[0-9]+".toRegex())) {
+                    if (item.getAiValue() == "") {
+                        item.setAiValue("0")
+                    } else {
+                        info.text = StringBuffer("Please enter only integer value")
+                        info.setTextColor(Color.parseColor("#BD020E"))
+                        checker = -1
+                        break
+                    }
+                }
+
+            }
+            if (checker == 0) {
+                val intent = Intent(this, BufferActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         gridArrayList = MutableList(adapterA.aiArrayList.size * adapterB.biArrayList.size) { ai() }

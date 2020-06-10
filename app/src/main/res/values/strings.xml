@@ -29,5 +29,6 @@
     <string name="_0">0</string>
     <string name="ai">Ai:</string>
     <string name="bi">Bi:</string>
+    <string name="enter_costs_of_transportation">Enter costs of transportation</string>
 
 </resources>

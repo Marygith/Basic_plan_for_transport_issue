@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:background="#023A53"
+                android:background="#034968"
                 android:text="@string/ai"
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp"

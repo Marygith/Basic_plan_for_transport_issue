@@ -19,9 +19,24 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         btnBack.setOnClickListener {
-val intent = Intent(this, ThirdActivity::class.java)
-startActivity(intent)
-        }
+            var checker = 0
+            for (item in adapterA.aiArrayList) {
+                if (!item.getAiValue().matches("[0-9]+".toRegex())) {
+                    btnWarning.text = StringBuffer("Please enter only integer value")
+                    checker = -1
+                    break
+                }
+            }
+            if(checker == 0) {
+                btnWarning.clearComposingText()
+                val intent = Intent(this, ThirdActivity::class.java)
+                startActivity(intent)
+            }
+
+
+
+
+            }
 
         aiArrayList= MutableList(1) {ai()}
         currentAdapter = adapterA(this, aiArrayList)

@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SouthWest">
-
-
+    tools:context=".MinCostActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridrecycler"
 
-        android:layout_marginBottom="100dp"
         android:layout_width="match_parent"
-        android:layout_marginTop="0dp"
         android:layout_height="match_parent"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,18 +25,26 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toEndOf="@+id/tablebtn"
+        app:layout_constraintTop_toBottomOf="@+id/gridrecycler"
+        app:layout_constraintVertical_bias="0.595" />
 
     <TextView
         android:id="@+id/t"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/transportation_cost"
         android:textAlignment="center"
         android:textColor="#033005"
@@ -43,17 +52,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="@+id/gridrecycler" />
+        app:layout_constraintStart_toStartOf="@+id/gridrecycler"
+        app:layout_constraintTop_toBottomOf="@+id/gridrecycler" />
 
     <Button
         android:id="@+id/tablebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/source_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridrecycler" />
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toEndOf="@+id/t"
+        app:layout_constraintTop_toBottomOf="@+id/gridrecycler"
+        app:layout_constraintVertical_bias="0.571" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
