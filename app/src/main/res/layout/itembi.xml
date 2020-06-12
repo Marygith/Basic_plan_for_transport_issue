@@ -28,7 +28,7 @@
             android:layout_width="150dp"
             android:layout_height="60dp"
 
-            android:background="#024C85"
+            android:background="#034070"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -37,8 +37,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:background="#024C85"
-                android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+
                 android:text="@string/bi"
                 android:textColor="#FFF"
                 android:textSize="30sp" />

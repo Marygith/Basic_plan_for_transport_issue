@@ -7,13 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_third.*
 
 class ThirdActivity : AppCompatActivity() {
-
-
-    private var currentAdapter: adapterB? = null // EditAdapter
-    lateinit var biArrayList: MutableList<ai> // EditModel  EditModelArrayList
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+ override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
 
@@ -56,4 +51,6 @@ class ThirdActivity : AppCompatActivity() {
                 false
             )
     }
+    private var currentAdapter: adapterB? = null
+    lateinit var biArrayList: MutableList<ai>
 }

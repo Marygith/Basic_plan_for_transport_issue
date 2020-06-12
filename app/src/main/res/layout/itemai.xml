@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="60dp"
 
             android:background="#023A53"

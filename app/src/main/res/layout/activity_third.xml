@@ -17,7 +17,7 @@
         android:layout_marginEnd="50dp"
         android:text="@string/enter_b_required_quantity_of_products"
         android:textAlignment="center"
-        android:textColor="#033005"
+        android:textColor="#034070"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.262"
@@ -28,11 +28,8 @@
         android:id="@+id/recycler"
         android:layout_width="700dp"
         android:layout_height="100dp"
-
-
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +45,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="130dp"
         android:text="@string/add_bi"
+        android:textColor="#FFF"
+        android:padding="5dp"
+        android:background="@drawable/corner_btn"
+        android:backgroundTint="#034070"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.236"
@@ -64,6 +65,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="130dp"
         android:text="@string/next"
+        android:textColor="#034070"
+        android:padding="5dp"
+        android:background="@drawable/service_btn"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

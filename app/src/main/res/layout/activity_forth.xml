@@ -27,6 +27,10 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="@string/next"
+        android:padding="5dp"
+        android:textColor="#020767"
+        android:background="@drawable/service_btn"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -36,21 +40,21 @@
 
     <TextView
         android:id="@+id/info"
-        android:textColor="#020767"
-        android:textSize="26sp"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:text="@string/enter_costs_of_transportation"
+        android:textColor="#020767"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnBack"
-        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintVertical_bias="0.44" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

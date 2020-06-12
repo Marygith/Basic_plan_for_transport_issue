@@ -2,18 +2,17 @@ package ru.itmo.firstproject
 
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_buffer.*
 
 class BufferActivity : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.N)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_buffer)
         buttonNE.setOnClickListener {
             val intent = Intent(this, NorthEast::class.java)
@@ -137,20 +136,20 @@ class BufferActivity : AppCompatActivity() {
 
 
     }
-    fun setColorAndText(cost: Int, tv : TextView) {
+    private fun setColorAndText(cost: Int, tv : TextView) {
         val costArray = listOf(costMC, costSE, costSW, costNW, costNE)
         if(cost == costArray.max()) {tv.setTextColor(Color.parseColor("#BD020E"))}
         if(cost == costArray.min()) {tv.setTextColor(Color.parseColor("#027106"))}
         tv.text = StringBuffer("Final cost: $cost")
     }
     private fun createArray(array : MutableList<ai>) : MutableList<ai> {
-        val Array = MutableList(0) { ai() }
+        val arr = MutableList(0) { ai() }
         for (item in array) {
             val x = ai()
             x.setAiValue(item.getAiValue())
-            Array.add(x)
+            arr.add(x)
         }
-        return Array
+        return arr
     }
 
     private fun cornerAlgorithm(x : Int, y : Int, pos1 : Int, pos2 : Int, array : MutableList<ai>) : Int {

@@ -30,6 +30,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/back"
+        android:background="@drawable/service_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
@@ -47,13 +48,14 @@
         android:layout_marginBottom="5dp"
         android:text="@string/transportation_cost"
         android:textAlignment="center"
-        android:textColor="#033005"
+        android:textColor="#020767"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="@+id/gridrecycler"
-        app:layout_constraintTop_toBottomOf="@+id/gridrecycler" />
+        app:layout_constraintTop_toBottomOf="@+id/gridrecycler"
+        app:layout_constraintVertical_bias="0.51" />
 
     <Button
         android:id="@+id/tablebtn"
@@ -63,12 +65,15 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/source_data_btn"
+        android:padding="5dp"
         android:text="@string/source_data"
+        android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toEndOf="@+id/t"
         app:layout_constraintTop_toBottomOf="@+id/gridrecycler"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.595" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

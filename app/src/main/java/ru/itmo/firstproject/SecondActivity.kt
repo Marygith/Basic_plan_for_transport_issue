@@ -7,15 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {
-
-
-
-    private var currentAdapter: adapterA? = null // EditAdapter
-    lateinit var aiArrayList: MutableList<ai> // EditModel  EditModelArrayList
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_second)
 
         btnBack.setOnClickListener {
@@ -32,21 +26,14 @@ class SecondActivity : AppCompatActivity() {
                 val intent = Intent(this, ThirdActivity::class.java)
                 startActivity(intent)
             }
-
-
-
-
-            }
+        }
 
         aiArrayList= MutableList(1) {ai()}
         currentAdapter = adapterA(this, aiArrayList)
-       // aiArrayList = MutableList(1) { x -> ai() }
-
         recycler.adapter = currentAdapter
         btn.setOnClickListener {
             aiArrayList.add(ai())
             currentAdapter!!.notifyDataSetChanged()
-
         }
         recycler.layoutManager =
             LinearLayoutManager(
@@ -54,6 +41,7 @@ class SecondActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL,
                 false
             )
-
     }
+    private var currentAdapter: adapterA? = null
+    lateinit var aiArrayList: MutableList<ai>
 }
