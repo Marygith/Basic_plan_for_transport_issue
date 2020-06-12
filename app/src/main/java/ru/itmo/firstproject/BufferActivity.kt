@@ -1,12 +1,17 @@
 package ru.itmo.firstproject
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_buffer.*
 
 class BufferActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buffer)
@@ -36,21 +41,9 @@ class BufferActivity : AppCompatActivity() {
         }
         val a = adapterA.aiArrayList.size
         val b = adapterB.biArrayList.size
-        var aiArray = MutableList(0) { ai() }
-        var biArray = MutableList(0) { ai() }
-        for (item in adapterB.biArrayList) {
-            val x = ai()
-            x.setAiValue(item.getAiValue())
-            biArray.add(x)
-        }
-        for (item in adapterA.aiArrayList) {
-            val y = ai()
-            y.setAiValue(item.getAiValue())
-            aiArray.add(y)
-
-
-        }
-        var planMC = Array(a) { IntArray(b) }
+        val aiArray = createArray(adapterA.aiArrayList)
+        val biArray = createArray(adapterB.biArrayList)
+        val planMC = Array(a) { IntArray(b) }
         val array = Array(a) { IntArray(b) }
 
         for (i in 0 until a) {
@@ -58,8 +51,6 @@ class BufferActivity : AppCompatActivity() {
                 array[i][j] = gridCellAdapter.gridArrayList[b * i + j].getAiValue().toInt()
             }
         }
-
-
         while (true) {
             var ai = 0
             var bi = 0
@@ -114,7 +105,7 @@ class BufferActivity : AppCompatActivity() {
             }
         }
         costMC = 0
-        var res = MutableList(a * b) { "" }
+        val res = MutableList(a * b) { "" }
         for (i in 0 until a) {
             for (j in 0 until b) {
                 if (planMC[i][j] > 0) {
@@ -131,300 +122,100 @@ class BufferActivity : AppCompatActivity() {
             arrayMC.add(aa)
         }
 
+        costNW = cornerAlgorithm(1, 1, 0, 0,  arrayNW)
+        costNE = cornerAlgorithm(1, -1, b-1, 0, arrayNE)
+        costSE = cornerAlgorithm(-1, -1, b-1, a-1, arraySE)
+        costSW = cornerAlgorithm(-1, 1, 0, a-1, arraySW)
 
-
-        aiArray.clear()
-        biArray.clear()
-        aiArray = MutableList(0) { ai() }
-        biArray = MutableList(0) { ai() }
-        for (item in adapterB.biArrayList) {
-            val x = ai()
-            x.setAiValue(item.getAiValue())
-            biArray.add(x)
-        }
-        for (item in adapterA.aiArrayList) {
-            val y = ai()
-            y.setAiValue(item.getAiValue())
-            aiArray.add(y)
-        }
-        var planNW = Array(a) { IntArray(b) }
-        var k = 0
-        var i = 0
-        while (true) {
-            var buffer = 0
-            for (item in biArray) {
-                if (item.getAiValue().toInt() != -1) {
-                    buffer = -1
-                }
-            }
-            if (buffer == 0) {
-                break
-            }
-            if (aiArray[i].getAiValue().toInt() >= biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                aiArray[i].setAiValue(
-                    (aiArray[i].getAiValue().toInt() - biArray[k].getAiValue().toInt()).toString()
-                )
-                planNW[i][k] = biArray[k].getAiValue().toInt()
-                biArray[k].setAiValue("-1")
-                k++
-
-                if (aiArray[i].getAiValue().toInt() == 0) {
-                    aiArray[i].setAiValue("-1"); i++
-                }
-                continue
-            }
-            if (aiArray[i].getAiValue().toInt() < biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                biArray[k].setAiValue(
-                    (biArray[k].getAiValue().toInt() - aiArray[i].getAiValue().toInt()).toString()
-                )
-                planNW[i][k] = aiArray[i].getAiValue().toInt()
-                aiArray[i].setAiValue("-1"); i++
-            }
-
-        }
-        costNW = 0
-        res.clear()
-        res = MutableList(a * b) { "" }
-        for (h in 0 until a) {
-            for (j in 0 until b) {
-                if (planNW[h][j] > 0) {
-                    costNW += planNW[h][j] * gridCellAdapter.gridArrayList[b * h + j].getAiValue()
-                        .toInt()
-                    res[h * b + j] = planNW[h][j].toString()
-                }
-            }
-        }
-        arrayNW.clear()
-        for (item in res) {
-            val aa = ai()
-            aa.setAiValue(item)
-            arrayNW.add(aa)
-        }
+        setColorAndText(costMC, btnCostMC)
+        setColorAndText(costNW, btnCostNW)
+        setColorAndText(costNE, btnCostNE)
+        setColorAndText(costSW, btnCostSW)
+        setColorAndText(costSE, btnCostSE)
 
 
 
-        aiArray.clear()
-        biArray.clear()
-        aiArray = MutableList(0) { ai() }
-        biArray = MutableList(0) { ai() }
-        for (item in adapterB.biArrayList) {
-            val x = ai()
-            x.setAiValue(item.getAiValue())
-            biArray.add(x)
-        }
-        for (item in adapterA.aiArrayList) {
-            val y = ai()
-            y.setAiValue(item.getAiValue())
-            aiArray.add(y)
-        }
-        var planNE = Array(a) { IntArray(b) }
-        k = b - 1
-        i = 0
-        while (true) {
-            var buffer = 0
-            for (item in biArray) {
-                if (item.getAiValue().toInt() != -1) {
-                    buffer = -1
-                }
-            }
-            if (buffer == 0) {
-                break
-            }
-            if (aiArray[i].getAiValue().toInt() >= biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                aiArray[i].setAiValue(
-                    (aiArray[i].getAiValue().toInt() - biArray[k].getAiValue().toInt()).toString()
-                )
-                planNE[i][k] = biArray[k].getAiValue().toInt()
-                biArray[k].setAiValue("-1")
-                k--
-
-                if (aiArray[i].getAiValue().toInt() == 0) {
-                    aiArray[i].setAiValue("-1"); i++
-                }
-                continue
-            }
-            if (aiArray[i].getAiValue().toInt() < biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                biArray[k].setAiValue(
-                    (biArray[k].getAiValue().toInt() - aiArray[i].getAiValue().toInt()).toString()
-                )
-                planNE[i][k] = aiArray[i].getAiValue().toInt()
-                aiArray[i].setAiValue("-1"); i++
-            }
-        }
-        costNE = 0
-        res.clear()
-        res = MutableList(a * b) { "" }
-        for (h in 0 until a) {
-            for (j in 0 until b) {
-                if (planNE[h][j] > 0) {
-                    costNE += planNE[h][j] * gridCellAdapter.gridArrayList[b * h + j].getAiValue()
-                        .toInt()
-                    res[h * b + j] = planNE[h][j].toString()
-                }
-            }
-        }
-        arrayNE.clear()
-        for (item in res) {
-            val aa = ai()
-            aa.setAiValue(item)
-            arrayNE.add(aa)
-        }
-
-
-        aiArray.clear()
-        biArray.clear()
-        aiArray = MutableList(0) { ai() }
-        biArray = MutableList(0) { ai() }
-        for (item in adapterB.biArrayList) {
-            val x = ai()
-            x.setAiValue(item.getAiValue())
-            biArray.add(x)
-        }
-        for (item in adapterA.aiArrayList) {
-            val y = ai()
-            y.setAiValue(item.getAiValue())
-            aiArray.add(y)
-        }
-        var planSW = Array(a) { IntArray(b) }
-        k = 0
-        i = a - 1
-        while (true) {
-            var buffer = 0
-            for (item in biArray) {
-                if (item.getAiValue().toInt() != -1) {
-                    buffer = -1
-                }
-            }
-            if (buffer == 0) {
-                break
-            }
-            if (aiArray[i].getAiValue().toInt() >= biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                aiArray[i].setAiValue(
-                    (aiArray[i].getAiValue().toInt() - biArray[k].getAiValue().toInt()).toString()
-                )
-                planSW[i][k] = biArray[k].getAiValue().toInt()
-                biArray[k].setAiValue("-1")
-                k++
-
-                if (aiArray[i].getAiValue().toInt() == 0) {
-                    aiArray[i].setAiValue("-1"); i--
-                }
-                continue
-            }
-            if (aiArray[i].getAiValue().toInt() < biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                biArray[k].setAiValue(
-                    (biArray[k].getAiValue().toInt() - aiArray[i].getAiValue().toInt()).toString()
-                )
-                planSW[i][k] = aiArray[i].getAiValue().toInt()
-                aiArray[i].setAiValue("-1"); i--
-            }
-        }
-        costSW = 0
-        res.clear()
-        res = MutableList(a * b) { "" }
-        for (h in 0 until a) {
-            for (j in 0 until b) {
-                if (planSW[h][j] > 0) {
-                    costSW += planSW[h][j] * gridCellAdapter.gridArrayList[b * h + j].getAiValue()
-                        .toInt()
-                    res[h * b + j] = planSW[h][j].toString()
-                }
-            }
-        }
-        arraySW.clear()
-        for (item in res) {
-            val aa = ai()
-            aa.setAiValue(item)
-            arraySW.add(aa)
-        }
-        aiArray.clear()
-        biArray.clear()
-        aiArray = MutableList(0) { ai() }
-        biArray = MutableList(0) { ai() }
-        for (item in adapterB.biArrayList) {
-            val x = ai()
-            x.setAiValue(item.getAiValue())
-            biArray.add(x)
-        }
-        for (item in adapterA.aiArrayList) {
-            val y = ai()
-            y.setAiValue(item.getAiValue())
-            aiArray.add(y)
-        }
-        var planSE = Array(a) { IntArray(b) }
-        k = b - 1
-        i = a - 1
-        while (true) {
-            var buffer = 0
-            for (item in biArray) {
-                if (item.getAiValue().toInt() != -1) {
-                    buffer = -1
-                }
-            }
-            if (buffer == 0) {
-                break
-            }
-            if (aiArray[i].getAiValue().toInt() >= biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                aiArray[i].setAiValue(
-                    (aiArray[i].getAiValue().toInt() - biArray[k].getAiValue().toInt()).toString()
-                )
-                planSE[i][k] = biArray[k].getAiValue().toInt()
-                biArray[k].setAiValue("-1")
-                k--
-
-                if (aiArray[i].getAiValue().toInt() == 0) {
-                    aiArray[i].setAiValue("-1"); i--
-                }
-                continue
-            }
-            if (aiArray[i].getAiValue().toInt() < biArray[k].getAiValue()
-                    .toInt() && biArray[k].getAiValue().toInt() != -1
-            ) {
-                biArray[k].setAiValue(
-                    (biArray[k].getAiValue().toInt() - aiArray[i].getAiValue().toInt()).toString()
-                )
-                planSE[i][k] = aiArray[i].getAiValue().toInt()
-                aiArray[i].setAiValue("-1"); i--
-            }
-
-        }
-        costSE = 0
-        res.clear()
-        res = MutableList(a * b) { "" }
-        for (h in 0 until a) {
-            for (j in 0 until b) {
-                if (planSE[h][j] > 0) {
-                    costSE += planSE[h][j] * gridCellAdapter.gridArrayList[b * h + j].getAiValue()
-                        .toInt()
-                    res[h * b + j] = planSE[h][j].toString()
-                }
-            }
-        }
-        arraySE.clear()
-        for (item in res) {
-            val aa = ai()
-            aa.setAiValue(item)
-            arraySE.add(aa)
-        }
-
-        // cost.text =  StringBuffer("costMC: $costMC costNW: $costNW  costSW: $costSW costSE: $costSE")
 
     }
+    fun setColorAndText(cost: Int, tv : TextView) {
+        val costArray = listOf(costMC, costSE, costSW, costNW, costNE)
+        if(cost == costArray.max()) {tv.setTextColor(Color.parseColor("#BD020E"))}
+        if(cost == costArray.min()) {tv.setTextColor(Color.parseColor("#027106"))}
+        tv.text = StringBuffer("Final cost: $cost")
+    }
+    private fun createArray(array : MutableList<ai>) : MutableList<ai> {
+        val Array = MutableList(0) { ai() }
+        for (item in array) {
+            val x = ai()
+            x.setAiValue(item.getAiValue())
+            Array.add(x)
+        }
+        return Array
+    }
 
+    private fun cornerAlgorithm(x : Int, y : Int, pos1 : Int, pos2 : Int, array : MutableList<ai>) : Int {
+        val a = adapterA.aiArrayList.size
+        val b = adapterB.biArrayList.size
+        val aiArray = createArray(adapterA.aiArrayList)
+        val biArray = createArray(adapterB.biArrayList)
+        val plan = Array(a) { IntArray(b) }
+        var k = pos1
+        var i = pos2
+        while (true) {
+            var buffer = 0
+            for (item in biArray) {
+                if (item.getAiValue().toInt() != -1) {
+                    buffer = -1
+                }
+            }
+            if (buffer == 0) {
+                break
+            }
+            if (aiArray[i].getAiValue().toInt() >= biArray[k].getAiValue()
+                    .toInt() && biArray[k].getAiValue().toInt() != -1
+            ) {
+                aiArray[i].setAiValue(
+                    (aiArray[i].getAiValue().toInt() - biArray[k].getAiValue().toInt()).toString()
+                )
+                plan[i][k] = biArray[k].getAiValue().toInt()
+                biArray[k].setAiValue("-1")
+                k+=y
+
+                if (aiArray[i].getAiValue().toInt() == 0) {
+                    aiArray[i].setAiValue("-1"); i+=x
+                }
+                continue
+            }
+            if (aiArray[i].getAiValue().toInt() < biArray[k].getAiValue()
+                    .toInt() && biArray[k].getAiValue().toInt() != -1
+            ) {
+                biArray[k].setAiValue(
+                    (biArray[k].getAiValue().toInt() - aiArray[i].getAiValue().toInt()).toString()
+                )
+                plan[i][k] = aiArray[i].getAiValue().toInt()
+                aiArray[i].setAiValue("-1"); i+=x
+            }
+
+        }
+        var cost = 0
+        val res = MutableList(a * b) { "" }
+        for (h in 0 until a) {
+            for (j in 0 until b) {
+                if (plan[h][j] > 0) {
+                    cost += plan[h][j] * gridCellAdapter.gridArrayList[b * h + j].getAiValue()
+                        .toInt()
+                    res[h * b + j] = plan[h][j].toString()
+                }
+            }
+        }
+        array.clear()
+        for (item in res) {
+            val aa = ai()
+            aa.setAiValue(item)
+            array.add(aa)
+        }
+        return cost
+    }
     companion object {
         var costMC = 0
         var costNW = 0

@@ -27,6 +27,10 @@ class MinCostActivity : AppCompatActivity() {
             val intent = Intent(this, SourceDataActivity::class.java)
             startActivity(intent)
         }
+        btnBack.setOnClickListener {
+            val intent = Intent(this, BufferActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 
