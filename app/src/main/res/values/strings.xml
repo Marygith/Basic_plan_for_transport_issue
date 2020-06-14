@@ -1,13 +1,7 @@
 <resources>
-    <string name="app_name">Method of potentials</string>
+    <string name="app_name">Basic plan for transport issue</string>
 
-    <string name="wow">Wow it does work!!</string>
-    <string name="wohohohoooow">Wohohohoooow</string>
     <string name="hello">Hello!!</string>
-
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="north_west">Northwest</string>
     <string name="north_east">Northeast</string>
@@ -33,5 +27,11 @@
     <string name="minimum_cost">Minimum cost</string>
     <string name="delete_bi">Delete bi</string>
     <string name="delete_ai">Delete ai</string>
+    <string name="press_to_view_n_an_example">Press to view\n an example</string>
+    <string name="press_to_start_n_with_your_data">Press to start\n with your data</string>
+    <string name="sample">Sample</string>
+    <string name="start">Start!</string>
+    <string name="welcome_to_the_transport_issue_program">Welcome to the transport issue program!</string>
+    <string name="start_again">start again</string>
 
 </resources>

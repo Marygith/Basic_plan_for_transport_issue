@@ -12,7 +12,32 @@ class ThirdActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
+        if(MainActivity.flag == 1) {
+            biArrayList = BufferActivity.createArrayFromInt(listOf(30, 80, 20, 30, 90) as MutableList<Int>)
+        }
+        else {
+            delete_bi.isClickable = false
+            biArrayList = MutableList(1) { ai() }
+            btn.setOnClickListener {
+                biArrayList.add(ai())
+                currentAdapter!!.notifyDataSetChanged()
+                if (biArrayList.size > 1) {
+                    delete_bi.isClickable = true
+                    delete_bi.background.setTint(Color.parseColor("#034070"))
+                }
+            }
+            delete_bi.setOnClickListener {
+                if (biArrayList.size > 1) {
+                    biArrayList.removeAt(biArrayList.size - 1)
+                    currentAdapter!!.notifyDataSetChanged()
+                }
+                if (biArrayList.size <= 1) {
+                    delete_bi.isClickable = false
+                    delete_bi.background.setTint(Color.parseColor("#BAC8D3"))
+                }
 
+            }
+        }
         btnBack.setOnClickListener {
             var checker = 0
             for (item in adapterB.biArrayList) {
@@ -37,32 +62,8 @@ class ThirdActivity : AppCompatActivity() {
                 }
             }
         }
-        delete_bi.isClickable = false
-
-
-        biArrayList = MutableList(1) { ai() }
         currentAdapter = adapterB(this, biArrayList)
-
         recycler.adapter = currentAdapter
-        btn.setOnClickListener {
-            biArrayList.add(ai())
-            currentAdapter!!.notifyDataSetChanged()
-            if (biArrayList.size > 1) {
-                delete_bi.isClickable = true
-                delete_bi.background.setTint(Color.parseColor("#034070"))
-            }
-        }
-        delete_bi.setOnClickListener {
-            if (biArrayList.size > 1) {
-                biArrayList.removeAt(biArrayList.size - 1)
-                currentAdapter!!.notifyDataSetChanged()
-            }
-            if (biArrayList.size <= 1) {
-                delete_bi.isClickable = false
-                delete_bi.background.setTint(Color.parseColor("#BAC8D3"))
-            }
-
-        }
         recycler.layoutManager =
             LinearLayoutManager(
                 applicationContext,

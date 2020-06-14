@@ -48,15 +48,15 @@ class BufferActivity : AppCompatActivity() {
         //Statistics
         val costPercentArray = arrayOf(0, 0, 0, 0, 0)
         for(i in 1..100) {
-            val arrayA = MutableList(4) { (10..20).random() }
+            val arrayA = MutableList(4) { (1..100).random() }
             val sumA = arrayA.sum()
-            val arrayB = MutableList(1) { (10..20).random() }
+            val arrayB = MutableList(1) { (1..100).random() }
             while (sumA > arrayB.sum()) {
-                arrayB.add((10..20).random())
+                arrayB.add((1..100).random())
             }
             arrayB.removeAt(arrayB.size - 1)
             arrayB.add(sumA - arrayB.sum())
-            val arrayGrid = MutableList(arrayA.size * arrayB.size) { (10..20).random() }
+            val arrayGrid = MutableList(arrayA.size * arrayB.size) { (1..10).random() }
             val mc = minCostAlgorithm(createArrayFromInt(arrayA), createArrayFromInt(arrayB), createArrayFromInt(arrayGrid), MutableList(0){ai()})
             val nw = cornerAlgorithm(1, 1, 0, 0,   MutableList(0){ai()}, createArrayFromInt(arrayA), createArrayFromInt(arrayB), createArrayFromInt(arrayGrid))
             val ne = cornerAlgorithm(1, -1, arrayB.size-1, 0,   MutableList(0){ai()}, createArrayFromInt(arrayA), createArrayFromInt(arrayB), createArrayFromInt(arrayGrid))
@@ -68,12 +68,15 @@ class BufferActivity : AppCompatActivity() {
         }
 
 
-        setColorAndText(costMC, btnCostMC, costPercentArray[0])
-        setColorAndText(costNW, btnCostNW, costPercentArray[1])
-        setColorAndText(costNE, btnCostNE, costPercentArray[2])
-        setColorAndText(costSW, btnCostSW, costPercentArray[3])
-        setColorAndText(costSE, btnCostSE, costPercentArray[4])
-
+        setColorAndText(costMC, btnCostMC, costPercentArray[0]) // 94
+        setColorAndText(costNW, btnCostNW, costPercentArray[1]) // 3
+        setColorAndText(costNE, btnCostNE, costPercentArray[2]) // 3
+        setColorAndText(costSW, btnCostSW, costPercentArray[3]) // 3
+        setColorAndText(costSE, btnCostSE, costPercentArray[4]) // 3
+ btn_start.setOnClickListener {
+     val intent = Intent(this, MainActivity::class.java)
+     startActivity(intent)
+ }
 
     }
     private fun setColorAndText(cost: Int, tv : TextView, percent : Int) {
@@ -91,15 +94,7 @@ class BufferActivity : AppCompatActivity() {
         }
         return arr
     }
-    private fun createArrayFromInt(array : MutableList<Int>) : MutableList<ai> {
-        val arr = MutableList(0) { ai() }
-        for (item in array) {
-            val x = ai()
-            x.setAiValue(item.toString())
-            arr.add(x)
-        }
-        return arr
-    }
+
 
     private fun cornerAlgorithm(x : Int, y : Int, pos1 : Int, pos2 : Int, array : MutableList<ai>, arrayA : MutableList<ai>, arrayB : MutableList<ai>, arrayGrid : MutableList<ai>) : Int {
         val a = arrayA.size
@@ -251,6 +246,15 @@ class BufferActivity : AppCompatActivity() {
         return cost
     }
     companion object {
+         fun createArrayFromInt(array : MutableList<Int>) : MutableList<ai> {
+            val arr = MutableList(0) { ai() }
+            for (item in array) {
+                val x = ai()
+                x.setAiValue(item.toString())
+                arr.add(x)
+            }
+            return arr
+        }
         var costMC = 0
         var costNW = 0
         var costNE = 0

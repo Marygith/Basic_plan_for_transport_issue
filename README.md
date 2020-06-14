@@ -37,7 +37,7 @@ Details:
    * Every button has the result of algorithm - final cost of transportation 
    * Every result is colored - green is for the most optimal one, red is for the least optimal, blue is for middle
    * After every cost there is a percentage, that shows probability for this algorithm to be the most optimal
-   * Percentage is calculated using random numbers from 1 to 100 as input 
+   * Percentage is calculated using random numbers from 1 to 100 (products) and from 1 to 10 (costs) as input 
 2. Algorithm's screen shows basic plan and transportation cost(again). There is a button that leads to source data
 3. Source data: all input collected and represented on one screen
 
@@ -55,7 +55,7 @@ Details:
 
 + IDE - android studio
 
-## *Team*:
+## *Team:*
 
 
 Masha Naumenko P3122

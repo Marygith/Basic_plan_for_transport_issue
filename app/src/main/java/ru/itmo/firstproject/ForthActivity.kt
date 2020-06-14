@@ -16,10 +16,23 @@ class ForthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-
-
         setContentView(R.layout.activity_forth)
-
+        if(MainActivity.flag == 1) {
+            gridArrayList = BufferActivity.createArrayFromInt(listOf(2, 4, 2, 3, 8, 3, 5, 6, 6, 2, 6, 8, 7, 4, 5, 3, 4, 2, 1, 4) as MutableList<Int>)
+            recycler.layoutManager = GridLayoutManager(
+                applicationContext,
+                5
+            )
+        }
+        else {
+            gridArrayList =
+                MutableList(adapterA.aiArrayList.size * adapterB.biArrayList.size) { ai() }
+            recycler.layoutManager = GridLayoutManager(
+                applicationContext,
+                adapterB.biArrayList.size
+            )
+        }
+        currentAdapter = gridCellAdapter(this, gridArrayList)
         btnBack.setOnClickListener {
             var checker = 0
             for (item in gridArrayList) {
@@ -33,23 +46,14 @@ class ForthActivity : AppCompatActivity() {
                         break
                     }
                 }
-
             }
             if (checker == 0) {
                 val intent = Intent(this, BufferActivity::class.java)
                 startActivity(intent)
             }
         }
-
-        gridArrayList = MutableList(adapterA.aiArrayList.size * adapterB.biArrayList.size) { ai() }
-        currentAdapter = gridCellAdapter(this, gridArrayList)
-
-
         recycler.adapter = currentAdapter
-        recycler.layoutManager = GridLayoutManager(
-            applicationContext,
-            adapterB.biArrayList.size
-        )
+
 
     }
 }
