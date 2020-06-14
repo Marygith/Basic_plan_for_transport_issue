@@ -1,5 +1,6 @@
 # Overview:
-***
+
+
 #### This program is designed to solve a transport problem using five different DM algorithms:
 
 + the method of minimum cost
@@ -12,12 +13,12 @@
 #### There will be some experimental transportation problems to define an algorithm that is the most beneficial statistically.
 
 ## Input
-*
+
 #### Input is divided into three parts(screens):
-..
+
 1. "A" value input - amount of products in each point of departure
 2. "B" value input - amount of required products in each destination
-3.  A transportation cost input from each Ai to each Bi in generated table with size A*B..
+3.  A transportation cost input from each Ai to each Bi in generated table with size A*B
 
 
 ![](/app/src/main/res/drawable-v24/a_input.jpg)
@@ -27,7 +28,8 @@
 ![](/app/src/main/res/drawable-v24/transportation_cost.jpg)
 
 ## Output
-***
+
+
 #### Output is represented by results of the algorithms
 
 1. First screen: there are five buttons, each represents one of the algorithms and leads to the result of it.
@@ -37,7 +39,7 @@ Details:
 ...+ After every cost there is a percentage, that shows probability for this algorithm to be the most optimal
 ...+ Percentage is calculated using random numbers from 1 to 100 as input 
 2. Algorithm's screen shows basic plan and transportation cost(again). There is a button that leads to source data
-3. Source data: all input collected and represented on one screen..
+3. Source data: all input collected and represented on one screen
 
 
 ![](/app/src/main/res/drawable-v24/five_algorithms.jpg)
@@ -47,11 +49,13 @@ Details:
 ![](/app/src/main/res/drawable-v24/source_data.jpg)
 
 ## *Tools:*
-***
+
+
 + Programming language - Kotlin
 
 + IDE - android studio
 
 ## *Team*:
-***
+
+
 Masha Naumenko P3122
