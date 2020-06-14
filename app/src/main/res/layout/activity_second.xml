@@ -49,37 +49,37 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="200dp"
         android:layout_marginBottom="50dp"
-        android:text="@string/add_ai"
         android:background="@drawable/corner_btn"
         android:backgroundTint="#023A53"
-        android:textColor="#FFF"
         android:padding="5dp"
+        android:text="@string/add_ai"
+        android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/recycler"
-        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintVertical_bias="0.345" />
 
     <Button
         android:id="@+id/btnBack"
-        android:background="@drawable/service_btn"
-        android:textColor="#023A53"
-
-        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/service_btn"
+        android:padding="5dp"
         android:text="@string/next"
+        android:textColor="#023A53"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/recycler"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.791"
         app:layout_constraintStart_toEndOf="@+id/btn"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintVertical_bias="0.345" />
 
     <TextView
         android:id="@+id/btnWarning"
@@ -97,5 +97,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn"
         app:layout_constraintVertical_bias="0.405" />
+
+    <Button
+        android:id="@+id/delete_ai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/delete_ai"
+        android:background="@drawable/corner_btn"
+        android:backgroundTint="#9CAFB8"
+        android:padding="5dp"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/btnWarning"
+        app:layout_constraintEnd_toStartOf="@+id/btnBack"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toEndOf="@+id/btn"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.532" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

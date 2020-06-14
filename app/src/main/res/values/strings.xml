@@ -31,5 +31,7 @@
     <string name="bi">Bi:</string>
     <string name="enter_costs_of_transportation">Enter costs of transportation</string>
     <string name="minimum_cost">Minimum cost</string>
+    <string name="delete_bi">Delete bi</string>
+    <string name="delete_ai">Delete ai</string>
 
 </resources>

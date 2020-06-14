@@ -4,22 +4,18 @@ import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import java.util.ArrayList
 
 class adapterA(ctx: Context, aiArrayLists: MutableList<ai>) :
     RecyclerView.Adapter<adapterA.viewHolder>() {
 
-    val inflater: LayoutInflater
-//    var aiArrayList: MutableList<ai>
+    private val inflater: LayoutInflater = LayoutInflater.from(ctx)
 
     init {
 
-        inflater = LayoutInflater.from(ctx)
         aiArrayList = aiArrayLists
     }
 
