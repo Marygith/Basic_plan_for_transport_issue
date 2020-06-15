@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_buffer.*
+import java.lang.StringBuilder
 
 class BufferActivity : AppCompatActivity() {
 
@@ -63,8 +64,12 @@ class BufferActivity : AppCompatActivity() {
             val sw = cornerAlgorithm(-1, 1, 0, arrayA.size-1,   MutableList(0){ai()}, createArrayFromInt(arrayA), createArrayFromInt(arrayB), createArrayFromInt(arrayGrid))
             val se = cornerAlgorithm(-1, -1, arrayB.size-1, arrayA.size-1,   MutableList(0){ai()}, createArrayFromInt(arrayA), createArrayFromInt(arrayB), createArrayFromInt(arrayGrid))
 
-             val costArray = listOf(mc, nw, ne, sw, se)
-            for(q in 0..4) {if(costArray[q] == costArray.min()) {costPercentArray[q]++}}
+            val costArray = listOf(mc, nw, ne, sw, se)
+            for (q in 0..4) {
+                if (costArray[q] == costArray.min()) {
+                    costPercentArray[q]++
+                }
+            }
         }
 
 
@@ -73,10 +78,11 @@ class BufferActivity : AppCompatActivity() {
         setColorAndText(costNE, btnCostNE, costPercentArray[2]) // 3
         setColorAndText(costSW, btnCostSW, costPercentArray[3]) // 3
         setColorAndText(costSE, btnCostSE, costPercentArray[4]) // 3
- btn_start.setOnClickListener {
-     val intent = Intent(this, MainActivity::class.java)
-     startActivity(intent)
- }
+
+        btn_start.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
     private fun setColorAndText(cost: Int, tv : TextView, percent : Int) {
