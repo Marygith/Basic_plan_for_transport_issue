@@ -13,12 +13,10 @@ class SecondActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_second)
         if(MainActivity.flag == 1) {
-            aiArrayList = BufferActivity.createArrayFromInt(listOf(120, 30, 40, 60) as MutableList<Int>)
+            aiArrayList = BufferActivity.createArrayFromInt(listOf(120, 30, 40, 60) as MutableList<Int>)//(listOf(46, 88, 19, 33) as MutableList<Int>)//
         }
         else {
             aiArrayList = MutableList(1) { ai() }
-           // currentAdapter = adapterA(this, aiArrayList)
-            //recycler.adapter = currentAdapter
             btn.setOnClickListener {
                 aiArrayList.add(ai())
                 currentAdapter!!.notifyDataSetChanged()

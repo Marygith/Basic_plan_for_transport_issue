@@ -18,10 +18,10 @@ class ForthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forth)
         if(MainActivity.flag == 1) {
-            gridArrayList = BufferActivity.createArrayFromInt(listOf(2, 4, 2, 3, 8, 3, 5, 6, 6, 2, 6, 8, 7, 4, 5, 3, 4, 2, 1, 4) as MutableList<Int>)
+            gridArrayList = BufferActivity.createArrayFromInt(listOf(2, 4, 2, 3, 8, 3, 5, 6, 6, 2, 6, 8, 7, 4, 5, 3, 4, 2, 1, 4) as MutableList<Int>)//(listOf(7, 2, 4, 7, 2, 2, 2, 1, 10, 2, 4, 6) as MutableList<Int>)//
             recycler.layoutManager = GridLayoutManager(
                 applicationContext,
-                5
+                5 //3//
             )
         }
         else {

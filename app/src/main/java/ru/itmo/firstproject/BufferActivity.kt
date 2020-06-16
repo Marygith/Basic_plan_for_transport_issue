@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_buffer.*
-import java.lang.StringBuilder
 
 class BufferActivity : AppCompatActivity() {
 

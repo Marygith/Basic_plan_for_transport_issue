@@ -13,7 +13,7 @@ class ThirdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
         if(MainActivity.flag == 1) {
-            biArrayList = BufferActivity.createArrayFromInt(listOf(30, 80, 20, 30, 90) as MutableList<Int>)
+            biArrayList = BufferActivity.createArrayFromInt(listOf(30, 80, 20, 30, 90) as MutableList<Int>)//(listOf(73, 97, 16) as MutableList<Int>)//
         }
         else {
             delete_bi.isClickable = false
